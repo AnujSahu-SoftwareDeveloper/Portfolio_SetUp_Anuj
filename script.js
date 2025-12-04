@@ -56,3 +56,75 @@ function typeEffect() {
 }
 
 typeEffect();
+
+
+
+
+// const text = "I hope you enjoyed seeing my work!";
+// const thank_typingSpeed = 60;
+// const eraseSpeed = 40;
+// const delayAfterTyping = 1000;
+// let thank_index = 0;
+// let isTyping = true;
+
+// function Thank_typeEffect() {
+//     const element = document.getElementById("thankLine");
+
+//     if (isTyping) {
+//         if (thank_index < text.length) {
+//             element.textContent += text.charAt(thank_index);
+//             thank_index++;
+//             setTimeout(Thank_typeEffect, thank_typingSpeed);
+//         } else {
+//             isTyping = false;
+//             setTimeout(Thank_typeEffect, delayAfterTyping);
+//         }
+//     } else {
+//         if (thank_index > 0) {
+//             element.textContent = text.substring(0, thank_index - 1);
+//             thank_index--;
+//             setTimeout(Thank_typeEffect, eraseSpeed);
+//         } else {
+//             isTyping = true;
+//             setTimeout(Thank_typeEffect, thank_typingSpeed);
+//         }
+//     }
+// }
+
+// window.onload = function () {
+//     Thank_typeEffect();
+// };
+
+const lastwordElement = document.getElementById("lastText");
+const lastwordText = "Thank you for visiting my portfolio! ";
+
+let lw_index = 0;
+let lw_typing = true;
+
+const lw_typeSpeed = 60;
+const lw_eraseSpeed = 40;
+const lw_delay = 3000; // <-- Increase delay to see full text
+
+function lastwordTyping() {
+    if (lw_typing) {
+        if (lw_index < lastwordText.length) {
+            lastwordElement.innerHTML = lastwordText.substring(0, lw_index);
+            lw_index++;
+            setTimeout(lastwordTyping, lw_typeSpeed);
+        } else {
+            lw_typing = false;
+            setTimeout(lastwordTyping, lw_delay);
+        }
+    } else {
+        if (lw_index > 0) {
+            lw_index--;
+            lastwordElement.innerHTML = lastwordText.substring(0, lw_index);
+            setTimeout(lastwordTyping, lw_eraseSpeed);
+        } else {
+            lw_typing = true;
+            setTimeout(lastwordTyping, lw_typeSpeed);
+        }
+    }
+}
+
+lastwordTyping();
