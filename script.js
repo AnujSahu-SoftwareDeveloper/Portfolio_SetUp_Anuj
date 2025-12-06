@@ -101,9 +101,9 @@ const lastwordText = "Thank you for visiting my portfolio! ";
 let lw_index = 0;
 let lw_typing = true;
 
-const lw_typeSpeed = 60;
-const lw_eraseSpeed = 40;
-const lw_delay = 3000; // <-- Increase delay to see full text
+const lw_typeSpeed = 80;
+const lw_eraseSpeed = 60;
+const lw_delay = 2000; // <-- Increase delay to see full text
 
 function lastwordTyping() {
     if (lw_typing) {
@@ -128,3 +128,40 @@ function lastwordTyping() {
 }
 
 lastwordTyping();
+
+const projectItems = document.querySelectorAll(".project-item");
+
+projectItems.forEach(item => {
+    const img = item.querySelector(".project-thumb");
+    const video = item.querySelector(".project-video");
+
+    img.addEventListener("click", () => {
+        
+        // STEP 1: Stop and reset all other videos first
+        projectItems.forEach(otherItem => {
+            const otherImg = otherItem.querySelector(".project-thumb");
+            const otherVideo = otherItem.querySelector(".project-video");
+
+            if (otherVideo !== video) {
+                otherVideo.pause();
+                otherVideo.currentTime = 0;
+                otherVideo.style.display = "none";
+                otherImg.style.display = "block";
+            }
+        });
+
+        // STEP 2: Now play the clicked item's video
+        img.style.display = "none";
+        video.style.display = "block";
+        video.currentTime = 0;
+        video.play();
+    });
+
+    // Optional: click video to stop and revert back to image
+    video.addEventListener("click", () => {
+        video.pause();
+        video.currentTime = 0;
+        video.style.display = "none";
+        img.style.display = "block";
+    });
+});
