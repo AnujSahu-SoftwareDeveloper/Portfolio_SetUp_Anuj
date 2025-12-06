@@ -244,7 +244,7 @@ span {
 .service-container .service-box{
     width : 100%;
     display: flex;
-    gap: 20px;          /* space between circular buttons */
+    gap: 30px;          /* space between circular buttons */
     flex-wrap: wrap;    /* makes it responsive */
     justify-content: center;
     margin-top: 20px;
@@ -254,7 +254,7 @@ span {
 .service-container .skills-box{
     width : 100%;
     display: flex;
-    gap: 20px;          /* space between circular buttons */
+    gap: 30px;          /* space between circular buttons */
     flex-wrap: wrap;    /* makes it responsive */
     justify-content: center;
 
@@ -571,6 +571,12 @@ span {
     .contact .lastWord{
         margin-top: 9vw;
     }
+    .service-container .service-box{
+        gap: 20px;
+    }
+    .service-container .skills-box{
+        gap: 20px;
+    }
 
 }
 @media(max-width: 617px){
@@ -600,6 +606,13 @@ span {
         background-color: var(--snd-bg-color) !important;
         box-shadow: none !important
     }
+    .service-container .service-box{
+        gap: 20px;
+    }
+    .service-container .skills-box{
+        gap: 20px;
+    }
+
 }
 
 
