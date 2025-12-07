@@ -133,35 +133,26 @@ const projectItems = document.querySelectorAll(".project-item");
 
 projectItems.forEach(item => {
     const img = item.querySelector(".project-thumb");
-    const video = item.querySelector(".project-video");
+    const iframe = item.querySelector(".project-video");
+    const videoUrl = item.getAttribute("data-video");
 
     img.addEventListener("click", () => {
-        
-        // STEP 1: Stop and reset all other videos first
-        projectItems.forEach(otherItem => {
-            const otherImg = otherItem.querySelector(".project-thumb");
-            const otherVideo = otherItem.querySelector(".project-video");
 
-            if (otherVideo !== video) {
-                otherVideo.pause();
-                otherVideo.currentTime = 0;
-                otherVideo.style.display = "none";
+        // Reset all other videos
+        projectItems.forEach(other => {
+            if (other !== item) {
+                const otherImg = other.querySelector(".project-thumb");
+                const otherIframe = other.querySelector(".project-video");
+
+                otherIframe.src = "";
+                otherIframe.style.display = "none";
                 otherImg.style.display = "block";
             }
         });
 
-        // STEP 2: Now play the clicked item's video
+        // Hide image and show YouTube
         img.style.display = "none";
-        video.style.display = "block";
-        video.currentTime = 0;
-        video.play();
-    });
-
-    // Optional: click video to stop and revert back to image
-    video.addEventListener("click", () => {
-        video.pause();
-        video.currentTime = 0;
-        video.style.display = "none";
-        img.style.display = "block";
+        iframe.style.display = "block";
+        iframe.src = videoUrl;  // autoplay
     });
 });
